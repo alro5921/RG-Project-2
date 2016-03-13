@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{bbold}
+\usepackage{cancel}
+
+\title{Random Graphs Project 1}
+\author{Alex Rose, Pedro}
+\date{Marh 2016}
+
+\begin{document}
+
+\maketitle
+
+\section{Random Graph Coupling}
+
+Let $E$ be the probability of an edge existing in the union graph, and $E_i$ the probability of an edge existing in graph $i$.
+
+\subsection{}
+$P(E) = P(E_1 \lor E_2) = P(E_1) + P(E_2) - P(E_1 \land E_2) = p_1 + p_2 -p_1p_2$.
+
+\subsection{}
+$P(E) = 1 - P(\neg E_1 \land \neg E_2 \land ... \land \neg E_n) = 1 - (1-p_1)(1-p_2)...(1-p_n) = 1 - q$ 
+
+
+\section{Threshold Function Existence Proof}
+
+For this section, let $f_n(p) = \mathbb{P}(G_{n,p} \models A)$ and $g_n(p) = \mathbb{P}(G_{n,p} \cancel{\models} A) = 1 - f_n(p)$.
+
+\subsection{}
+
+\subsection{}
+$f_n(0) = 0$ and $f_n(1) = 1$, and $f_n(t)$ is continuous. So by the Intermediate Value Theorem, $\exists p_n$ such that $f_n(p_n) = \frac{1}{2}$.
+
+\subsection{}
+Proof by induction. At $k = 1$, the expression is $[1-(1-p) \le 1*p] \rightarrow [p \le p]$. Suppose the expression is true at $k = n$ i.e $[1-(1-p)^k \le np]$. Then for $k = n+1$:
+
+$$1-(1-p)^{n+1} \le (n+1)p \rightarrow 1 - (1-p)^n + p(1-p)^n \le np + p \rightarrow p(1-p)^n \le p $$ 
+$$\rightarrow (1-p)^n \le 1$$
+
+And $(1-p)^n < 1$ holds for all $0 \le p \le 1$ and $n \ge 1$. So the expression is true by induction.
+
+\subsection{}
+
+\subsection{}
+From (2.4), we have $g_n(kp) < g_n(p)^k$ for integer $k \ge 1$ and $0 \le p \le 1$. So $g_n(\left \lfloor{k_n}\right \rfloor p_n) \le g_n(p_n)^{\left \lfloor{k_n}\right \rfloor}$, and as $g_n(p_n) = \frac{1}{2}$: 
+
+$$\lim_{n\to\infty} g_n(p_n)^{\left \lfloor{k_n}\right \rfloor} = \lim_{n\to\infty} \frac{1}{2}^{\left \lfloor{k_n}\right \rfloor} = 0$$
+
+So $g_n(\left \lceil{k_n}\right \rceil p)$ goes to 0.
+
+\subsection{}
+As $g_n$ is monotonically decreasing, $g_n(kp) \le g_n(\left \lfloor{k_n}\right \rfloor p)$. So as $g_n(\left \lfloor{k_n}\right \rfloor p)$ goes to 0 as $n \to \infty$, $g_n(kp)$ also goes to 0.
+
+\subsection{}
+$\lim_{n\to\infty} g_n(\frac{p_n}{k_n}) = 1$ is equivalent to $\lim_{n\to\infty} f_n\left(\frac{p_n}{k_n}\right)=0$. As $p_n$ is bounded, $\lim_{n\to\infty} \frac{p_n}{k_n} = 0$. So:
+
+$$\lim_{n\to\infty} f_n\left(\frac{p_n}{k_n}\right) = f_n(0) = 0 \rightarrow \lim_{n\to\infty} g_n\left(\frac{p_n}{k_n}\right) = 1$$.
+
+\subsection{}
+Let $T(n) = p_n$ be the threshold function. If $p(n) >> T(n)$, $p(n)$ is of the form $k_n p_n$, where $(k_n)_{n \ge 1} \to \infty$, by definition of the $>>$ operator. (2.6) showed $\lim_{n\to\infty} g_n(k_n p_n) = 0$, which implies $\lim_{n\to\infty} f_n(p(n)) = 1$ if $p(n) >> T(n)$.\\
+
+Likewise; if $p(n) << T(n)$, $p(n)$ is of the form $\frac{p_n}{k_n}$ by definition of the $<<$ operator. (2.7) showed $\lim_{n\to\infty} g_n(\frac{p_n}{k_n}) = 1$, which implies $\lim_{n\to\infty} f_n(p(n)) = 0$ if $p(n) << T(n)$. So by the definition of a threshold function, $T(n) = p_n$ is a threshold function of A.
+
+\end{document}
