@@ -30,6 +30,13 @@ $P(E) = 1 - P(\neg E_1 \land \neg E_2 \land ... \land \neg E_n) = 1 - (1-p_1)(1-
 For this section, let $f_n(p) = \mathbb{P}(G_{n,p} \models A)$ and $g_n(p) = \mathbb{P}(G_{n,p} \cancel{\models} A) = 1 - f_n(p)$.
 
 \subsection{}
+Consider $a$ to be the set of graphs in $G_{n,p}$ with the monotone property $A$. Since each graph is distinct,
+
+$$P(G_{n,p}\vDash A)=\sum_{G_i\in a} P(G_{n,p}=G_i)$$
+
+Since there are a finite number of graphs in the state space of $G_{n,p}$, the sum is finite. Therefore, if we prove that the inner probability is continuous, this is a finite sum of continuous functions which is itself continuous.
+
+The probability of any particular $G_i\in G_{n,p}$ is defined as $P(G_i)=p^{c}q^{{n\choose 2}-c}$ where $c\in [0,{n\choose 2}]$. For a particular $G_i$, its existence is calculated by success of $c$ edges existing times ${n\choose 2}-c$ edges not existing. Since this function is continuous with respect to $p$, the probability of $P(G_{n,p}\vDash A)$ is also continuous.
 
 \subsection{}
 $f_n(0) = 0$ and $f_n(1) = 1$, and $f_n(t)$ is continuous. So by the Intermediate Value Theorem, $\exists p_n$ such that $f_n(p_n) = \frac{1}{2}$.
