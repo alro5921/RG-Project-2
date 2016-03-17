@@ -1,12 +1,13 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb,amsthm}
 \usepackage{dsfont}
 \usepackage{bbold}
 \usepackage{cancel}
 
-\title{Random Graphs Project 1}
-\author{Alex Rose, Pedro}
+\title{Random Graphs Project 2}
+\author{Alex Rose, Pedro Rodriguez}
 \date{Marh 2016}
 
 \begin{document}
@@ -42,6 +43,21 @@ $$\rightarrow (1-p)^n \le 1$$
 And $(1-p)^n < 1$ holds for all $0 \le p \le 1$ and $n \ge 1$. So the expression is true by induction.
 
 \subsection{}
+Consider graphs $G_1,...,G_k$ and $P(G_i\vDash A)$. Note that a union graph includes all its subgraphs, so by definition if the monotone property holds for an individual monotone property $A$, it also holds for the union graph. Therefore, we observe from the inclusion-exclusion principle and that each graph is generated from the same $G_{n,p}$ that:
+
+\begin{align*}
+P(G_1\vDash A \vee ... \vee G_k\vDash A)&\le P(\cup_{i=1}^k G_i\vDash A)\\
+1-P(G_1\nvDash A \wedge ... \wedge G_k\nvDash A)&\le P(\cup_{i=1}^k G_i\vDash A)\\
+1-P(G_p\nvDash A)^k&\le P(\cup_{i=1}^k G_i\vDash A)\\
+P(\cup_{i=1}^kG_i\vDash A)&=P(G_{1-q}\vDash A), q=\prod_{i=1}^k(1-p)=(1-p)^k\\
+P(\cup_{i=1}^kG_i\vDash A)&=P(G_{1-(1-p)^k}\vDash A)\\
+\text{Since P is continuous and from 2.3}\\
+P(G_{1-(1-p)^k}\vDash A)&\le P(G_{kp}\vDash A)\\
+1-P(G_p\nvDash A)^k\le P(\cup_{i=1}^k G_i\vDash A)&=P(G_{1-(1-p)^k}\vDash A)\le P(G_{kp}\vDash A)\\
+1-P(G_p\nvDash A)^k&\le P(G_{kp}\vDash A)\\
+1-P(G_{kp}\vDash A)&\le P(G_p\nvDash A)^k\\
+P(G_{kp}\nvDash A)&\le P(G_p\nvDash A)^k\qed \\
+\end{align*}
 
 \subsection{}
 From (2.4), we have $g_n(kp) < g_n(p)^k$ for integer $k \ge 1$ and $0 \le p \le 1$. So $g_n(\left \lfloor{k_n}\right \rfloor p_n) \le g_n(p_n)^{\left \lfloor{k_n}\right \rfloor}$, and as $g_n(p_n) = \frac{1}{2}$: 
