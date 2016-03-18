@@ -42,12 +42,16 @@ The probability of any particular $G_i\in G_{n,p}$ is defined as $P(G_i)=p^{c}q^
 $f_n(0) = 0$ and $f_n(1) = 1$, and $f_n(t)$ is continuous. So by the Intermediate Value Theorem, $\exists p_n$ such that $f_n(p_n) = \frac{1}{2}$.
 
 \subsection{}
-Proof by induction. At $k = 1$, the expression is $[1-(1-p) \le 1*p] \rightarrow [p \le p]$. Suppose the expression is true at $k = n$ i.e $[1-(1-p)^k \le np]$. Then for $k = n+1$:
+Proof by induction. At $k = 1$, the expression is $[1-(1-p) \le 1*p] \rightarrow [p \le p]$. Suppose the expression is true at $k = n$
 
-$$1-(1-p)^{n+1} \le (n+1)p \rightarrow 1 - (1-p)^n + p(1-p)^n \le np + p \rightarrow p(1-p)^n \le p $$ 
-$$\rightarrow (1-p)^n \le 1$$
+\begin{align*}
+1-(1-p)^n &\le np\\
+[1-p][1-(1-p)^n]&\le np\text{ since $1-p\le 1$}\\
+1-p-(1-p)^{n+1}&\le np\\
+1-(1-p)^{n+1}&\le np+p=p(n+1)
+\end{align*}
 
-And $(1-p)^n < 1$ holds for all $0 \le p \le 1$ and $n \ge 1$. So the expression is true by induction.
+Therefore, it is true by induction for $k\ge 1$ and $0\le p\le 1$
 
 \subsection{}
 Consider graphs $G_1,...,G_k$ and $P(G_i\vDash A)$. Note that a union graph includes all its subgraphs, so by definition if the monotone property holds for an individual graph, it also holds for the union graph as well. Therefore, we observe from the inclusion-exclusion principle and that each graph is generated from the same $G_{n,p}$ that:
